@@ -1,0 +1,26 @@
+<div class="form-group">
+    <div class="input-group input-group-merge input-group-alternative mb-3">
+    <div class="input-group-prepend">
+    <video id="webcamVideo" width="854" height="480" style="border : 1px black solid;"autoplay></video>
+    <canvas id="webcamcanvas" width="854" height="480" style="border : 1px black solid;"autoplay></canvas>
+    <button onclick="startcamera();">Mulai Kamera</button>
+    <script>
+      var wVideo= Document.queryselector("#webcamVideo");
+      var wVideo= Document.queryselector("#webcamVideo");
+      async function startcamera(){
+        var stream = null;
+        try{
+          stream= await navigator.mediaDevices.getUserMedia({video:true , audio:false})
+        }catch(error){
+          alert(error);
+          return;
+        }
+        wVideo.srcObject=stream;
+      }
+      function ambilgambar(){
+        wcanvas.getcontext("2d").drawimage(wvideo,0,,0,854,480);
+        var imagedata=wcanvas.todataurl("image/jpeg");
+
+        console.log(imagedata);
+      }
+    </script>
